@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/survey")//
-@CrossOrigin("http://192.168.117.40:3000/")
+@CrossOrigin
 public class SurveyController {
     private final ISurveySevice iSurveySevice;
 

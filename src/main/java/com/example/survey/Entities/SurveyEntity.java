@@ -1,13 +1,21 @@
 package com.example.survey.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 
 @Entity
 @Data
-@Table(name = "Survey")
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+@Table(name = "Survey",
+        indexes = {
+                @Index(name = "fki_userId_fk", columnList = "userId")})
 public class SurveyEntity {
 
     @Id
@@ -19,9 +27,10 @@ public class SurveyEntity {
     @Column(name = "surveyName")
     private String surveyName;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "createdUserId")
-    private UserEntity createdUserId;
-    
+    @Column(name = "active")
+    private Boolean active;
+
+    @Column(name = "userId", nullable = false)
+    private Long createdUserId;
 
 }
