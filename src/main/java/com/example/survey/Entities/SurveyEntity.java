@@ -30,7 +30,7 @@ public class SurveyEntity {
     @Column(name = "active")
     private Boolean active;
 
-    @Column(name = "userId", nullable = false)
+    @Column(name = "userId")
     private Long createdUserId;
 
 }
